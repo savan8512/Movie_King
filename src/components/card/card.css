@@ -1,0 +1,242 @@
+:root {
+    --surface-color: #373030;
+    --curve: 40;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: #000000 !important;
+  }
+  
+  .cards {
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 1rem 1vw;
+    padding: 0;
+    list-style-type: none;
+  }
+  .card::before,
+.card::after {
+  position: absolute;
+  content: "";
+  width: 20%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: bold;
+  /* background-color: lightblue; */
+  border: 1px solid rgba(255,255,255,0.1);
+  background-color: rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+  transition: all 0.5s;
+}
+.glass-panel {
+  color: #fff;
+  background-color: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  width: 100%;
+  border-radius: 15px;
+  padding: 32px;
+  backdrop-filter: blur(10px);
+}
+.card::before {
+  top: 0;
+  right: 0;
+  border-radius: 0 15px 0 100%;
+}
+
+.card::after {
+  bottom: 0;
+  left: 0;
+  border-radius: 0 100%  0 15px;
+}
+
+.card:hover::before,
+.card:hover:after {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  transition: all 0.5s;
+}
+  
+  .card {
+    position: relative;
+    display: block;
+    height: 100%;  
+    border-radius: calc(var(--curve) * 1px);
+    overflow: hidden;
+    text-decoration: none;
+    color: #000000 !important;
+  }
+  
+  .card__image {      
+    width: 300px;
+    height: auto;
+  }
+  .card__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;      
+    border-radius: calc(var(--curve) * 1px); 
+    transform: translateY(100%);
+    transition: .2s ease-in-out;
+  }
+  
+  .card:hover .card__overlay {
+    transition: .2s ease-in-out;
+    transform: translateY(0);
+  }
+  .card__image:hover {
+    /* opacity: 0.2; */
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) !important; */
+  }
+  
+  .card__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    padding: 2em;
+    border-radius: calc(var(--curve) * 1px) 0 0 0;    
+    background-color: var(--surface-color);
+    transform: translateY(-100%);
+    transition: .2s ease-in-out;
+  }
+  
+  .card__arc {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    bottom: 100%;
+    right: 0;      
+    z-index: 1;
+  }
+  
+  .card__arc path {
+    fill: var(--surface-color);
+    d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+  }       
+  
+  .card:hover .card__header {
+    transform: translateY(0);
+  }
+  
+  .card__thumb {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;      
+    border-radius: 50%;      
+  }
+  
+  .card__title {
+    font-size: 1em;
+    margin: 0 0 .3em;
+    color: #000000;
+  }
+  .card__rating{
+    font-size: .8em;
+    color: #000000;
+  }
+  .card__tagline {
+    display: block;
+    margin: 1em 0;
+    font-family: "MockFlowFont";  
+    font-size: .8em; 
+    color: #000000;  
+  }
+  .star{
+    font-size: 20px;
+    color: #000000;
+  }
+  
+  .card__status {
+    font-size: .8em;
+    color: #000000;
+  }
+  
+  .card__description {
+    padding: 0 2em 2em;
+    margin: 0;
+    mix-blend-mode: difference;
+    color: #000000 !important;
+    font-family: "MockFlowFont";   
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }    
+
+  body {
+    background: #242424;
+    height: 2500px;
+    overflow-x: hidden;
+  }
+  
+  .circle {
+    height: 16px;
+    width: 73px;
+    border-radius: 100%;
+    background: #bd34fe;
+    position: absolute;
+  }
+  
+  .circle-wrapper {
+    position: relative;
+    background: #41d1ff;
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+    filter: blur(30px);
+    transform: scale(2.75);
+  }
+  
+  .circle.first {
+    transform: scale(2.5);
+    left: 11%;
+    top: 30%;
+    animation: 2s ease-out pulse infinite both;
+    animation-direction: alternate;
+  }
+  
+  .circle.second {
+    transform: scale(3.5);
+    right: 20%;
+    top: 55%;
+    animation: 2s ease-out pulse infinite both;
+    animation-direction: alternate;
+    animation-delay: 0.5s;
+  }
+  
+  .circle.third {
+    transform: scale(2.75);
+    left: 47.5%;
+    top: 20%;
+    animation: 2s ease-out pulse infinite both;
+    animation-direction: alternate;
+    animation-delay: 1s;
+  }
+  
+  .circle.fourth {
+    transform: scale(2.5);
+    left: 25%;
+    bottom: 25%;
+    animation: 2s ease-out pulse infinite both;
+    animation-direction: alternate;
+    animation-delay: 1.2s;
+  }
+  
+  @keyframes pulse {
+    to {
+      transform: scale(0.5);
+    }
+  }
